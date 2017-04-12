@@ -36,7 +36,7 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 
     // Integrations
-    compile group: 'com.github.evotor', name: 'integration-library', version: 'v0.0.7', changing: true
+    compile group: 'com.github.evotor', name: 'integration-library', version: 'v0.0.8', changing: true
 }
 
 kapt {
