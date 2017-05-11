@@ -36,7 +36,9 @@ dependencies {
     compile "org.androidannotations:androidannotations-api:$AAVersion"
 
     // Integrations
-    compile group: 'com.github.evotor', name: 'integration-library', version: 'v0.0.8', changing: true
+//    compile group: 'com.github.evotor', name: 'integration-library', version: 'v0.0.8', changing: true
+    compile group: 'com.github.xcam', name: 'integration-library', version: 'e837561f616a80800e690a14bf2a1f1a36219f87', changing: true
+
 }
 
 kapt {

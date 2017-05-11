@@ -12,12 +12,14 @@ import android.support.v4.widget.SimpleCursorAdapter
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.widget.ListView
+import android.widget.Toast
 import org.androidannotations.annotations.Background
 import org.androidannotations.annotations.Click
 import org.androidannotations.annotations.EActivity
 import org.androidannotations.annotations.OnActivityResult
+import ru.evotor.framework.inventory.InventoryApi
+import ru.evotor.framework.inventory.ProductItem
 import ru.evotor.integrations.ReceiptsApi
-import ru.evotor.integrations.inventory.InventoryApi
 
 @EActivity
 open class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cursor> {
@@ -66,6 +68,10 @@ open class MainActivity : AppCompatActivity(), LoaderManager.LoaderCallbacks<Cur
     open fun addProductByUuid(uuid: String) {
         val product = InventoryApi.getProductByUuid(this, uuid) ?: return
 
+        if (product !is ProductItem.Product) {
+            Toast.makeText(this, "Выбран не товар!", Toast.LENGTH_LONG).show()
+            return
+        }
         val contentValues = ContentValues()
         contentValues.put(ReceiptsApi.Positions.ROW_PRICE, product.price.toPlainString())
         contentValues.put(ReceiptsApi.Positions.ROW_QUANTITY, 1)
